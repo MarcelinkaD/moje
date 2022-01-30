@@ -1,1 +1,1 @@
-print("Działa")+
+print("Działa")
