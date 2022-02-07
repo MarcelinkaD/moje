@@ -15,7 +15,7 @@ def czy_plus(ramie):
     global wie
     czy_ciagle_plus = False
     
-    for i in range(ramie, liczba_wie - ramie - 1):
+    for i in range(ramie, liczba_wie - ramie):
         if(wie[i] >= 2 * ramie + 1):
             for k in range(1, ramie + 1):
                 if(wie[i - k] >= ramie + 1 and wie[i + k] >= ramie + 1):
