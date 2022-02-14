@@ -1,19 +1,9 @@
-from dataclasses import dataclass
- 
-@dataclass
-class GfgArticle():
-    """A class for holding an article content"""
- 
-    # Attributes Declaration
-    # using Type Hints
- 
-    title: str
-    author: str
-    language: str
-    upvotes: int
- 
-# A DataClass object
-article = GfgArticle("DataClasses",
-                     "vibhu4agarwal",
-                     "Python", 0)
-print(article)
+def reverse(s):
+    j = ""
+    for i in range(len(s) - 1, -1, -1):
+        j += s[i]
+    
+    return j
+
+bh = str(input())
+print(reverse(bh))

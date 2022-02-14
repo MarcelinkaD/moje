@@ -1,14 +1,20 @@
-pomiar = ""
-osoby = 0
+from sys import stdin
+input = stdin.readline
 
-while pomiar != -1:
-    poprzedni_pomiar = pomiar
-    pomiar = int(input())
+def main():
+    pomiar = ""
+    osoby = 0
 
-    if(pomiar == -1):
-        break
+    while pomiar != -1:
+        poprzedni_pomiar = pomiar
+        pomiar = int(input())
 
-    if(pomiar != poprzedni_pomiar and poprzedni_pomiar != ""):
-        osoby += 1
+        if(pomiar == -1):
+            break
 
-print(osoby)
+        if(pomiar != poprzedni_pomiar and poprzedni_pomiar != ""):
+            osoby += 1
+
+    print(osoby)
+
+main()
