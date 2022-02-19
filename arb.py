@@ -22,5 +22,4 @@ def main():
     
     print(h + 1)
     
-    
 main()
