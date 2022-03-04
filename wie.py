@@ -1,5 +1,6 @@
 from typing import Container
-
+from sys import stdin
+input = stdin.readline
 
 def WyszukajBinarnie(tab, liczba, n):
     p = 0
@@ -16,26 +17,27 @@ def WyszukajBinarnie(tab, liczba, n):
 
     return k
 
+def main():
+    liczba_schodkow, liczba_mieszkancow = map(int, input().split())
 
-liczba_schodkow, liczba_mieszkancow = map(int, input().split())
+    schodki = list(map(int, input().split()))
 
-schodki = list(map(int, input().split()))
+    mieszkancy = list(map(int, input().split()))
+    dodanie = 0
 
-mieszkancy = list(map(int, input().split()))
-dodanie = 0
-
-for schodek in range(1, liczba_schodkow):
-    if(schodki[schodek] < schodki[schodek - 1]):
-        dodanie = schodki[schodek - 1]
-        schodki[schodek] = dodanie
+    for schodek in range(1, liczba_schodkow):
+        if(schodki[schodek] < schodki[schodek - 1]):
+            dodanie = schodki[schodek - 1]
+            schodki[schodek] = dodanie
 
 
 
-for ludzik in mieszkancy:
-    if ludzik <= schodki[0]:
-        print("0", end = " ")
-        continue
+    for ludzik in mieszkancy:
+        if ludzik <= schodki[0]:
+            print("0", end = " ")
+            continue
 
-    miejsce = WyszukajBinarnie(schodki, ludzik, liczba_schodkow)
-    print(miejsce, end = " ")
+        miejsce = WyszukajBinarnie(schodki, ludzik, liczba_schodkow)
+        print(miejsce, end = " ")
 
+main()
