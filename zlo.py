@@ -2,7 +2,6 @@ from sys import stdin
 input = stdin.readline
 
 def gasienica(tab, dlugosc_tab, do_kradziezy):
-    #GLOWA i ogon musza byc ustawione przed poczatkiem tablicy
     ogon = -1
     glowa = -1
     wynik_najlepszy = dlugosc_tab + 1
@@ -18,9 +17,7 @@ def gasienica(tab, dlugosc_tab, do_kradziezy):
         
         ogon += 1
         akt_wynik -= tab[ogon]
-        
-        #jezeli szukamy minialnej dlugosci to warunek powtarzamy gdy ogon "skraca" odcinek (czyli sie przesuwa do przodu)
-        #bo wtedy mozemy uzuskac krotszy odcinek
+    
         if(akt_wynik == do_kradziezy):
             wynik_najlepszy = min(glowa - ogon, wynik_najlepszy)
         
