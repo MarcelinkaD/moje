@@ -1,4 +1,4 @@
 # Moje projekty Pythonowe
 
 
-###### Lubię pączki.
+###### Lubię pączki oraz naleśniki z truskawkami.
