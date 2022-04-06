@@ -1,23 +1,33 @@
-godziny = 23
-minuty = 59
-sekundy = 59
+from sys import stdin
+input = stdin.readline
 
-sekundy = sekundy + 1 
-
-if (sekundy == 60):
-    sekundy = 0
-    minuty = minuty + 1
-
-if (minuty == 60):
-    minuty = 0
-    godziny = godziny + 1
-
-if (godziny == 24):
-    godziny = 0
-
-def zero_napoczatku(liczba):
-    if (liczba < 10):
-     return str(0) + str(liczba)
+def main():
+    godz, min, sek = map(int, input().split())
+    
+    if sek + 1 == 60:
+        sek = 0
+        min += 1
+        if min == 60:
+            min = 0
+            godz += 1
+            if godz == 24:
+                godz = 0       
     else:
-        return str(liczba)
-print(zero_napoczatku(godziny) + ":" + zero_napoczatku(minuty) + ":" + zero_napoczatku(sekundy))
+        sek += 1
+    
+    sek = str(sek)
+    min = str(min)
+    godz = str(godz)
+    
+    if len(sek) == 1:
+        sek = "0" + sek
+        
+    if len(godz) == 1:
+        godz = "0" + godz
+    
+    if len(min) == 1:
+        min = "0" + min
+        
+    print(godz + ":" + min + ":" + sek)
+
+main()
