@@ -1,18 +1,18 @@
-def checkIfCorrect( message, checkSum ):
-    wynik = 0
-    for i in range(len(message)):
-        if i % 2 == 0:
-            wynik += ord(message[i]) * 2
-        elif i % 6 == 0:
-            wynik += ord(message[i]) * 6
-        elif i % 3 == 0:
-            wynik += ord(message[i]) * 3
+def oddSum():
+    plik_z_ciagami = open("ciagi.txt", "r+")
+    plik_z_wynikami = open("wynik.txt", "w+")
+    
+    for i in plik_z_ciagami:
+        w = 0
+        for k in i.split():
+            if int(k) % 2 == 1:
+                w += int(k)
+        
+        if w == int(i.split()[0]):
+            plik_z_wynikami.write(i)
             
-    wynik = wynik % 256
+    plik_z_ciagami.close()
+    plik_z_wynikami.close()
     
-    if wynik == checkSum:
-        return True
-    else:
-        return False
     
-print(checkIfCorrect( "jabłko", 219 ))
+oddSum()

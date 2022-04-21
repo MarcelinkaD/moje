@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<canvas id = "plansza_canvas" width = "200px" height = "200px">
+</canvas>
+<script>
+
+let plansza, rysowanie;
+let kamien_x;
+
+kamien_x = 0
+
+plansza = document.getElementById("plansza_canvas");
+rysowanie = plansza.getContext("2d");
+
+function RysujPlansze(){
+    rysowanie.fillStyle = "rgb(109, 181, 232)";
+    rysowanie.fillRect(0, 0, 200, 900);
+}
+
+function RysujPisanka(){
+    rysowanie.beginPath();
+    let grd = rysowanie.createLinearGradient(60, 0, 140, 0);
+    grd.addColorStop(0, "red");
+    grd.addColorStop(1, "white");
+    rysowanie.fillStyle = grd;
+    rysowanie.ellipse(100, 100, 40, 60, 0, 0, 2 * Math.PI);
+    rysowanie.fill();
+
+    rysowanie.closePath();
+
+}
+
+function Gra(){
+    RysujPlansze();
+    RysujPisanka();
+}
+
+
+
+setInterval(Gra, 1);
+
+</script>
+</body>
+</html>

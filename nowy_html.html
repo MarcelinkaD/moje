@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<canvas id="plansza_canvas" width="450px" height="220px">
+</canvas>
+<script>
+    let plansza, ry;
+    plansza = document.getElementById("plansza_canvas");
+    rys = plansza.getContext ("2d" ) ;
+    rys. fillstyle = "rgb(0,0,68)";
+    rys.fillRect(0, 0, plansza.width, plansza.height);
+    rys.beginPath();
+    rys.strokeStyle = "rgb(255,255,60)";
+    rys.lineWidth = 4;
+    rys.moveTo(100, 60); rys.lineTo(30, 90);
+    rys.lineTo(100, 120); rys.lineTo(30, 150);
+    rys.moveTo(120, 60); rys.lineTo(135, 150);
+    rys.lineTo(150, 60); rys.lineTo(165, 150);
+    rys.lineTo(180, 60);
+    rys.moveTo(200, 60);
+    rys.lineTo(200, 150);
+    rys.moveTo(220, 60);
+    rys.lineTo(220, 150);
+    rys.lineTo(260, 150); rys.moveTo(220, 105);
+    rys.lineTo(260,105);
+    rys.moveTo(220, 60); rys.lineTo(260, 60);
+    rys.moveTo(280, 60); rys.lineTo(350, 60);
+    rys.moveTo (315, 60); rys.lineTo(315, 150);
+    rys.moveTo(380, 60); rys.lineTo(350, 150);
+    rys.moveTo(380, 60); rys.lineTo(410, 150);
+    rys.moveTo(360, 115); rys.lineTo(400, 115);
+    rys.stroke(); rys.closePath();
+</script>
+</body> 
+</html>

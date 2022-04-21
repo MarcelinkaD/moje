@@ -13,7 +13,6 @@ def main():
     wynik = ""
     
     while(badanaLiczba != 1):
-        
         d = sito[badanaLiczba]
         wynik += str(d) + " "
         badanaLiczba = int(badanaLiczba/d)

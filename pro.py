@@ -1,25 +1,20 @@
-liczba_programow = int(input())
+from sys import stdin
+input = stdin.readline
 
-programy = list(map(int, input().split()))
-
-liczba_plyt = int(input())
-
-plyty = list(map(int, input().split()))
-
-przeniesione_programy = 0
-
-programy.sort()
-plyty.sort()
-
-licznik_programow = 0
-licznik_plyt = 0
-
-while licznik_programow < liczba_programow and licznik_plyt < liczba_plyt:
-    if programy[licznik_programow] <= plyty[licznik_plyt]:
-        przeniesione_programy += 1
-        licznik_programow += 1
-        licznik_plyt += 1 
+def main():
+    n = int(input())
+    k = n // 2
+    w = n
+    
+    if n == 1:
+        print(1)
     else:
-        licznik_plyt += 1
-
-print(przeniesione_programy)
+        for i in range(1, k):
+            if k - i > 0:
+                w += k - i
+            else:
+                break
+                
+        print(w - 1)
+        
+main()
