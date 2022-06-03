@@ -1,18 +1,19 @@
-def oddSum():
-    plik_z_ciagami = open("ciagi.txt", "r+")
-    plik_z_wynikami = open("wynik.txt", "w+")
+def gcd( a, b ):
+    if b == 0:
+        return a
+    if b >= a % b:
+        return gcd(b, a % b)
+    else:
+        return gcd(a % b, b)
+
+def lcm( a, b ):
+    return (a * b) // gcd( a, b )
+
+
+def lcm_list( numbers ):
+    head = numbers[0]
+    tail = numbers[1:]
     
-    for i in plik_z_ciagami:
-        w = 0
-        for k in i.split():
-            if int(k) % 2 == 1:
-                w += int(k)
-        
-        if w == int(i.split()[0]):
-            plik_z_wynikami.write(i)
-            
-    plik_z_ciagami.close()
-    plik_z_wynikami.close()
-    
-    
-oddSum()
+    return lcm(head, lcm_list(tail))
+
+lcm_list( [8, 3, 13] )
