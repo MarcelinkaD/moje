@@ -1,12 +1,32 @@
-def setDict( x ):
-    y = dict.fromkeys( x, None )
-    for i in y:
-        c =[]
-        for m in range(1,i // 2 + 1):
-            if(i % m == 0):
-                c.append(i)
-        if len(c) == 2:
-            y[i] = "prime"
-    return y
+def is_acceptable_password(s):
+	breakpoint()
+	p = "password"
+	c = "p"
+	l = 0
+	for i in s:
+		if i == c and l == len(p):
+			return False
+		elif i == c:
+			l += 1
+			c = p[l]
+			
+	if len(s) >= 9:
+		return True
+	elif s.isdigit():
+		return False
+   
+        
+	else:
+		if len(s) <= 6:
+			return False
+		else:
+			if s[len(s) - 1].isdigit() == True:
+				return True
+			else:
+				return False
 
-print(setDict([31, 100, 40, 72, 2, 45, 53, 52, 23, 63, 3, 41, 7, 1, 99, 47, 38, 25, 87, 24, 26, 21]))
+if __name__ == "__main__":
+    assert is_acceptable_password("password12345") == False
+    assert is_acceptable_password("PASSWORD12345") == False
+    assert is_acceptable_password("pass1234word") == True
+    print("Coding complete? Click 'Check' to earn cool rewards!")

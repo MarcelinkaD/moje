@@ -1,16 +1,14 @@
-liczbaGlow = 84
-liczbaNog= 252
+from sys import stdin
+input = stdin.readline
 
-ilePelnychDwojek = 0
-
-while (liczbaNog - (2*liczbaGlow) >=0):
-    if(liczbaNog - (2*liczbaGlow) >=0):
-        liczbaNog-=(2*liczbaGlow)
-        ilePelnychDwojek+=1
-
-if(ilePelnychDwojek == 1):
-    liczbaGlowZDodatkowymiNogamiWOstatnimPrzebieguCzyliKrowy = liczbaNog / 2
-else:
-    liczbaGlowZDodatkowymiNogamiWOstatnimPrzebieguCzyliKrowy = liczbaGlow
-kury = liczbaGlow - liczbaGlowZDodatkowymiNogamiWOstatnimPrzebieguCzyliKrowy
-print(str(int(kury))+" "+str(int(liczbaGlowZDodatkowymiNogamiWOstatnimPrzebieguCzyliKrowy)))
+def binary(li, n):
+	kon = len(li)
+	pocz = 0
+	while pocz < kon:
+		sro = (pocz + kon) // 2
+		if li[sro] < n:
+			pocz = sro + 1
+		else:
+			kon = sro
+			
+	return pocz
