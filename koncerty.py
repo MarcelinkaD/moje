@@ -1,15 +1,16 @@
-kon = int(input())
+from sys import stdin
+input = stdin.readline
+from itertools import accumulate
 
-wszystkiekoncerty = list(map(int, input().split()))
+def main():
+	kon = int(input())
+	wszystkiekoncerty = list(map(int, input().split()))
+	sumypref = list(accumulate(wszystkiekoncerty))
+	sumypref.insert(0, 0)
+	ilepytan = int(input())
 
-sumypref = [0] * (kon +1 )
-
-for i in range(kon):
-    sumypref[i] = wszystkiekoncerty[i] + sumypref[i - 1]
-
-
-ilepytan = int(input())
-
-for i in range(ilepytan):
-    od, do = map(int, input().split())
-    print(sumypref[do - 1] - sumypref[od - 1 - 1])
+	for i in range(ilepytan):
+		od, do = map(int, input().split())
+		print(sumypref[do] - sumypref[od - 1])
+		
+main()
