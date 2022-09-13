@@ -10,5 +10,5 @@ def main():
         print(")", end = "")
     
     
-    n
+    
 main()
