@@ -4,25 +4,25 @@ input = stdin.readline
 def main():
 	lwie, lkol = map(int, input().split())
 	lista = []
-	max = -1
+	maxi = -1
 	
 	for i in range(lwie):
 		wiersz = list(map(int, input().split()))
+		maxi = max(max(wiersz), maxi)
 		lista.append(wiersz)
 		
-	w = 0
 	for i in range(lwie):
 		for k in range(lkol):
-			w += sum(lista[i]) - lista[i][k]
-			
-			for c in range(lwie):
-				w += lista[c][k]
+			if lista[i][k] == maxi:
+				lista[i][k] = "?"
 				
-			if w > max:
-				max = w
-			w = 0
-			
 				
-	print(max)
+	for i in lista:
+		kw = ""
+		for k in i:
+			kw += str(k) + " "
+			
+		print(kw)
+	
 	
 main()

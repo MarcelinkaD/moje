@@ -4,25 +4,26 @@ input = stdin.readline
 def main():
 	lwie, lkol = map(int, input().split())
 	lista = []
-	max = -1
+	wynik = []
 	
 	for i in range(lwie):
 		wiersz = list(map(int, input().split()))
 		lista.append(wiersz)
 		
-	w = 0
-	for i in range(lwie):
-		for k in range(lkol):
-			w += sum(lista[i]) - lista[i][k]
+		
+	w = []
+	for i in range(lkol):
+		for k in range(lwie):
+			w.append(lista[k][i])
+		w.reverse()
+		wynik.append(w)
+		w = []
+		
+	for i in wynik:
+		kw = ""
+		for k in i:
+			kw += str(k) + " "
 			
-			for c in range(lwie):
-				w += lista[c][k]
-				
-			if w > max:
-				max = w
-			w = 0
-			
-				
-	print(max)
+		print(kw)
 	
 main()

@@ -13,7 +13,6 @@ def main():
 	w = 0
 	for wiersz in range(lwie - 1):
 		for kolumna in range(lkol - 1):
-			# ~ breakpoint()
 			w += lista[wiersz][kolumna]
 			w += lista[wiersz + 1][kolumna]
 			w += lista[wiersz][kolumna + 1]
