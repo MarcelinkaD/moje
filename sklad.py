@@ -1,41 +1,37 @@
 from sys import stdin
 input = stdin.readline
-
-def gasenica(tablica, len, zapotrzebowanie_cementu):
-    ogon = -1
-    glowa = -1
-    wynik_super = len + 1
-    akt_wwyynniikk = 0
-    
-    while ogon < len - 1:
-        while glowa < len - 1 and akt_wwyynniikk <= zapotrzebowanie_cementu:
-            glowa += 1
-            akt_wwyynniikk += tablica[glowa]
-            
-            if akt_wwyynniikk == zapotrzebowanie_cementu:
-                wynik_super = min(glowa - ogon, wynik_super)
-            
-        ogon += 1
-        akt_wwyynniikk -= tablica[ogon]       
-        
-        if akt_wwyynniikk == zapotrzebowanie_cementu:
-            wynik_super = min(glowa - ogon, wynik_super)
-            
-    return wynik_super
     
 def main():
-    liczba_wagonow, suma = map(int, input().split())
-    wagony = list(map(int, input().split()))
-    wynik = 0 
-    
-    if suma in wagony:
-        return 1
-    else:
-        wynik = int(gasenica(wagony, liczba_wagonow, suma))
-        
-    if wynik == liczba_wagonow + 1:
-        return "N"
-    else:
-        return wynik
-    
+	liczba_wagonow, suma = map(int, input().split())
+	wagony = list(map(int, input().split()))
+	naj_wynik = 68543675467586749856
+	akt_wynik = 0
+	glowa = -1
+	ogon = 0
+	
+	if suma in wagony:
+		return 1
+	
+	while ogon < liczba_wagonow - 1:
+		while glowa < liczba_wagonow - 1 and akt_wynik <= suma:
+			# ~ breakpoint()
+			glowa += 1
+			akt_wynik += wagony[glowa]
+			
+			if akt_wynik == suma:
+				naj_wynik = min(naj_wynik, glowa - ogon + 1)
+				
+		akt_wynik -= wagony[ogon]
+		ogon += 1
+		
+		if akt_wynik == suma:
+			naj_wynik = min(naj_wynik, glowa - ogon + 1)
+			
+	if naj_wynik == 68543675467586749856:
+		return "N"
+	else:
+		return naj_wynik
+	
+	 
+
 print(main())
