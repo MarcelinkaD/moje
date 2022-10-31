@@ -3,7 +3,6 @@ input = stdin.readline
 
 def main():
 	s = str(input().strip())
-	# ~ breakpoint()
 	for i in range(0, len(s)):
 		s1 = s[i : i + 3]
 		for j in range(i + 1, len(s)):
@@ -16,5 +15,5 @@ def main():
 								
 
 	
-main()-
+main()
 
