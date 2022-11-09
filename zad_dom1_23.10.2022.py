@@ -14,6 +14,8 @@ def main():
 			czy = False
 	if czy:
 		print("TAK")
+	else:
+		print("NIE")
 	
 	
 main()
