@@ -1,22 +1,22 @@
+from decimal import Decimal as D
 from sys import stdin
 input = stdin.readline
 
 def NWD(n, k):
-    x = 0
-    while k != 0:
-        x = n % k
-        n, k = k, x
-        
-    return n
+	reszta = 0
+	while k > 0:
+		reszta = n % k
+		n, k = k, reszta
+		
+	return n
     
-def NWW(n, k):
-    return n * k // NWD(n, k)
+def NWW(l, a):
+	# ~ l = D.from_float(l)
+	# ~ a = D.from_float(a)
+	return (l * a) // NWD(l, a)
     
 def main():
-    liczba_liczb = int(input())
-    
-    for i in range(liczba_liczb):
-        c, b = map(int, input().split())
-        print(NWW(c, b))
+	c, b = map(int, input().split())
+	print(int(NWW(c, b)))
 
 main()
