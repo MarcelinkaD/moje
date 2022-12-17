@@ -1,58 +1,60 @@
-liczba_tarasow, kredyty = map(int, input().split())
-tarasy = [0] * liczba_tarasow
+from sys import stdin
+input = stdin.readline
 
+def gasienica(tarasy, k, n):
+	glowa = -1
+	ogon = 0
+	naj_wyn = -1
+	akt_wyn = 0
+	akt_kre = k
+	
+	while ogon < n - 1:
+		while glowa < n - 1 and akt_kre >= 0:
+			glowa += 1
+			akt_kre -= tarasy[glowa]
+			
+			if akt_kre >= 0:
+				akt_wyn += 1
+			else:
+				break
+			
+			
+			naj_wyn = max(naj_wyn, akt_wyn)
+			
+		akt_kre += tarasy[ogon]
+		ogon += 1
+		akt_wyn -= 1
+		naj_wyn = max(naj_wyn, akt_wyn)
+		
+	return naj_wyn
 
-for i in range(liczba_tarasow):
-     tarasy[i] = int(input())
+def main():
+	n, k = map(int, input().split())
+	ntar = [0] * n
+	tarasy = []
+	
+	for i in range(n):
+		tarasy.append(int(input()))
+	
+	for i in range(n - 1, 0, -1):
+		if tarasy[i] > tarasy[i - 1]:
+			ntar[i] = tarasy[i] - tarasy[i - 1]
+		else:
+			ntar[i] = 0
+	
+	tarasy.reverse()
+	for i in range(n - 1, 0, -1):
+		if tarasy[i] > tarasy[i - 1]:
+			tarasy[i] = tarasy[i] - tarasy[i - 1]
+		else:
+			tarasy[i] = 0
+			
+	tarasy[0] = 0
+	ntar[0] = 0
+	pie = gasienica(ntar, k, n)
+	dru = gasienica(tarasy, k, n)
+	
+	print(max(pie, dru))
 
-ogon = 0
-glowa = 0
-
-aktKred = kredyty
-najleprzynajBardziejDlugiGasienicowatyWynik = 0
-
-while (ogon < liczba_tarasow - 1):
-    while (glowa < liczba_tarasow - 1) and (aktKred >= 0):
-        glowa += 1
-        roznicaMiedzyTarasem = tarasy[glowa] - tarasy[glowa - 1]
-        if roznicaMiedzyTarasem <= 0:
-            roznicaMiedzyTarasem = 0
-        aktKred -= roznicaMiedzyTarasem
-        
-        if(aktKred >= 0):
-            najleprzynajBardziejDlugiGasienicowatyWynik = max(glowa - ogon, najleprzynajBardziejDlugiGasienicowatyWynik)
-
-
-
-    roznicaDlaOgonu  = tarasy[ogon + 1] - tarasy[ogon]
-    if roznicaDlaOgonu > 0:
-        aktKred += roznicaDlaOgonu
-    ogon += 1
-
-
-tarasy.reverse()
-
-
-ogon = 0
-glowa = 0
-aktKred = kredyty
-
-while (ogon < liczba_tarasow - 1):
-    while (glowa < liczba_tarasow - 1) and (aktKred >= 0):
-        glowa += 1
-        roznicaMiedzyTarasem = tarasy[glowa] - tarasy[glowa - 1]
-        if roznicaMiedzyTarasem <= 0:
-            roznicaMiedzyTarasem = 0
-        aktKred -= roznicaMiedzyTarasem
-        
-        if(aktKred >= 0):
-            najleprzynajBardziejDlugiGasienicowatyWynik = max(glowa - ogon, najleprzynajBardziejDlugiGasienicowatyWynik)
-
-
-
-    roznicaDlaOgonu  = tarasy[ogon + 1] - tarasy[ogon]
-    if roznicaDlaOgonu > 0:
-        aktKred += roznicaDlaOgonu
-    ogon += 1
-
-print(int(najleprzynajBardziejDlugiGasienicowatyWynik))
+	
+main()

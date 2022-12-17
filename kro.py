@@ -1,13 +1,23 @@
-literka, liczba = map(str, input().split())
+from sys import stdin
+input = stdin.readline
 
-if(literka == "a" or literka == "h") and (liczba == "1" or liczba == "8"):
-    print("3")
+def potega(a, b, M):
+	if b == 0:
+		return 1
+		
+	wynik = potega(a, b // 2, M)
+	wynik = (wynik * wynik) % M
+	
+	if b % 2 == 1:
+		wynik = (wynik * a) % M
+	return wynik
 
-elif(literka == "a" or literka == "h") and (liczba != "1" or liczba != "8"):
-    print("5")
 
-elif(literka != "a" or literka != "h") and (liczba == "1" or liczba == "8"):
-    print("5")
-    
-elif(literka != "a" or literka != "h") and (liczba != "1" or liczba != "8"):
-    print("8")
+def main():
+	q = int(input())
+	
+	for i in range(q):
+		a, b = map(int, input().split())
+		print(potega(a + 1, b, 10000))
+	
+main()
