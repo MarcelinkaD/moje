@@ -27,7 +27,6 @@ def main():
 	for i in range(1, n + 1):
 		pref[i] = pref[i - 1] + l[i]
 		
-	breakpoint()
 	for i in range(1, n + 1):
 		if l[i] == war[i]:
 			print(0, end = " ")

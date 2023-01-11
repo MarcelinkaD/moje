@@ -3,12 +3,41 @@ from sys import stdin
 input = stdin.readline
         
 def main():
-	ciag = str(input().strip())
-	n = len(ciag_str)
-	liczba_grop = int(input())
-	ciag.sort()
-	ile_bedzie_cyfr_gora = n % k
-	ile_bedzie_cyfr_dol = n - (n % k)
+	c = str(input()).strip()
+	k = int(input())
+	ciag = [] 
 
+	for i in c:
+		ciag.append(i)
+		
+	ciag.sort()
+	przyszle = [""]  *  k
+	kto_teraz = 0
+
+	while len(ciag) != 0:
+		if len(przyszle[kto_teraz]) == 0:
+			for i in ciag:
+				if i != "0":
+					przyszle[kto_teraz] += i
+					break
+					
+			ciag.remove(i)
+		else:
+			przyszle[kto_teraz] += ciag[0]
+			ciag.remove(ciag[0])
+		
+		kto_teraz += 1
+		
+		if kto_teraz == len(przyszle):
+			kto_teraz -= len(przyszle)
+			
+	w = 0
+	
+	for i in przyszle:
+		w += int(i)
+		
+	print(w)
+			
+   
     
 main()

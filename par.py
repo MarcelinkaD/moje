@@ -1,45 +1,33 @@
 from sys import stdin
 input = stdin.readline
-from dataclasses import dataclass
-
-@dataclass
-class max_z_pkt:    
-    wysokosc: int
-    indeks: int
-
 
 def main():
-    liczba_pkt = int(input())
-    pkt = []
-    maks = 0
-    maksk = 0
-    w_prawo = [0] * liczba_pkt
-    w_lewo = [0] * liczba_pkt
-    
-    for i in range(liczba_pkt):
-        k = int(input())
-        pkt.append(k)
-        if pkt[i] > maksk:
-            maksk = pkt[i]
-            w_lewo[i] = maksk
-        else:
-            w_lewo[i] = maksk
-        
-    for i in range(liczba_pkt - 1, -1, -1):
-        if pkt[i] > maks:
-            maks = pkt[i]
-            w_prawo[i] = maks
-        else:
-            w_prawo[i] = maks
-            
-
-        
-            
-    for i in range(liczba_pkt):
-        print(w_lewo[i], end = " ")
-        print(w_prawo[i])
-        
-   
-    
+	n = int(input())
+	l = []
+	w = [[0, 0] for i in range(n)]
+	
+	for _ in range(n):
+		l.append(int(input()))
+		
+	na_zachod = l[0]
+	# ~ breakpoint()
+	for i in range(n):
+		if l[i] > na_zachod:
+			w[i][0] = l[i]
+			na_zachod = l[i]
+		else:
+			w[i][0] = na_zachod
+			
+	na_wschod = l[n - 1]
+	for i in range(n - 1, -1, -1):
+		if l[i] > na_wschod:
+			w[i][1] = l[i]
+			na_wschod = l[i]
+		else:
+			w[i][1] = na_wschod
+			
+	for i in w:
+		print(i[0], end = " ")
+		print(i[1]) 
+	
 main()
-        

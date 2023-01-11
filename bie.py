@@ -10,23 +10,19 @@ def main():
 		liczby.append(k)
 	
 	liczby.sort()
-	
-	glowa = 2
+	glowa = 1
 	ogon = 0
-	naj_wynik = 0
-	# ~ breakpoint()
-	while glowa < liczba_liczb:
-		pierwsze = liczby[ogon]
-		drugie = liczby[ogon + 1]
-		if pierwsze + drugie > liczby[glowa]:
-			wynik = (glowa - ogon) + 1
-			if wynik > naj_wynik:
-				naj_wynik = wynik
+	akt_wyn = 1
+	max_wyn = -1
+	while ogon < liczba_liczb:
+		while glowa < liczba_liczb and liczby[ogon] + liczby[ogon + 1] > liczby[glowa]:
 			glowa += 1
-		else:
-			ogon += 1
-	
-	print(naj_wynik)
+			akt_wyn += 1
+			max_wyn = max(max_wyn, akt_wyn)
 			
+		ogon += 1
+		akt_wyn -= 1
+		
+	print(max_wyn)
 	
 main()

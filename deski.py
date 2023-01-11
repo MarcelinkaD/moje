@@ -4,14 +4,17 @@ input = stdin.readline
 
 def funkcja(gwo, ile, len_pref, deski):
 	pref = [0] * (len_pref + 1)
-
 	for i in range(ile):
 		pref[gwo[i]] = 1
 		
-	pref = list(accumulate(pref))
+	nowy_pref = [0] * (len_pref + 1)
+	
+	for i in range(1, len_pref + 1):
+		nowy_pref[i] = nowy_pref[i - 1] + pref[i]
+	
 	
 	for i in range(len(deski)):
-		if pref[deski[i][1]] - pref[deski[i][0] - 1] == 0:
+		if nowy_pref[deski[i][1]] - nowy_pref[deski[i][0] - 1] == 0:
 			return False
 			
 	return True
@@ -19,7 +22,6 @@ def funkcja(gwo, ile, len_pref, deski):
 	
 
 def binary(gwo, len_pref, deski):
-	# ~ breakpoint()
 	pocz = 1 
 	kon = len(gwo)
 	while pocz < kon:
@@ -44,7 +46,5 @@ def main():
 	gwozdzie = list(map(int, input().split()))
 	
 	print(binary(gwozdzie, maxi, deski))
-	
-	# ~ breakpoint()
 	
 main()
