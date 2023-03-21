@@ -1,11 +1,14 @@
+from sys import stdin
+input = stdin.readline
+
 def main():
-    slowo = str(input())
-    do_skreslenia = 0
-    
-    for i in range(1, len(slowo)):
-        if(slowo[i] == slowo[i - 1]):
-            do_skreslenia += 1
-    
-    print(do_skreslenia)
-    
+	s = str(input())
+	w = 0
+	
+	for i in range(len(s) - 1):
+		if s[i] == s[i + 1]:
+			w += 1
+		
+	print(w)
+	
 main()

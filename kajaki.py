@@ -9,7 +9,7 @@ def main():
 	w = 0
 	od_lewo = 0
 	od_prawo = n - 1
-	# ~ breakpoint()
+
 	while od_lewo <= od_prawo:
 		if od_lewo == od_prawo:
 			w += 1

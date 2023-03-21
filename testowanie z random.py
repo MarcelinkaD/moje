@@ -1,32 +1,45 @@
 def brut(n, l):
-    w = 0
-
+    max_wyn = 0
+    
     for i in range(n):
-        for j in range(i + 1, n):
-            for k in range(j + 1 , n):
-                if l[i] + l[j] > l[k] and  l[k] + l[j] > l[i] and l[i] + l[k] > l[j]:
-                    w += 1
-                    
-    return w
+        w = 0
+        czy_ros = True
+        for k in range(i + 1, n):
+            if l[k - 1] < l[k] and czy_ros:
+                w += 1
+            elif l[k - 1] > l[k] and czy_ros:
+                w += 1
+                czy_ros = False
+            elif l[k - 1] > l[k] and czy_ros == False:
+                w += 1
+            elif l[k - 1] < l[k] and czy_ros == False:
+                break
+        
+        max_wyn = max(max_wyn, w + 1)
+        
+    return max_wyn
 
 def fast(n, l):
-    l = sorted(l)
-    w = 0
-    c = n - 1
+    max_wyn = 0
     
-    while c >= 2:
-        a = 0
-        b = c - 1
-        while a < b:
-            if l[a] + l[b] > l[c]:
-                w += b - a
-                b -= 1
-            else:
-                a += 1
-            
-        c -= 1
-          
-    return w
+    for i in range(n):
+        w = 0
+        czy_ros = True
+        for k in range(i + 1, n):
+            if l[k - 1] < l[k] and czy_ros:
+                w += 1
+            elif l[k - 1] > l[k] and czy_ros:
+                w += 1
+                czy_ros = False
+            elif l[k - 1] > l[k] and czy_ros == False:
+                w += 1
+            elif l[k - 1] < l[k] and czy_ros == False:
+                break
+        
+        max_wyn = max(max_wyn, w + 1)
+        
+    return max_wyn
+
 
 
 
@@ -37,11 +50,16 @@ while True:
     n = random.randint(1, 10)
     a = [0 for i in range(n)]
     for i in range(n):
-        a[i] = random.randint(1, 10**9)
+        a[i] = random.randint(1, 20)
     
     [wynik1, wynik2] = [brut(n, a), fast(n, a)]
     if wynik1 == wynik2:
-        print("Test " + str(numer_testu) + "     OK")
+        print("Test " + str(numer_testu) + "     " + str(wynik1))
+        print("\nwejscie:")
+        print(n)
+        for i in range(n):
+            print(a[i], end = ' ')
+        print("\n")
     else:
         print("Test " + str(numer_testu) + "     ZLA ODPOWIEDZ")
         print("\nwejscie:")

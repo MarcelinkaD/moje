@@ -1,38 +1,28 @@
 import math
+import heapq
 from collections import Counter as C
 from itertools import accumulate
 from dataclasses import dataclass
 from sys import stdin
 input = stdin.readline
 
-def main():
-    t = int(input())
-    l = list(map(int, input().split()))
-    glowa = -1
-    ogon = 0
-    akt_wyn = 0
-    lenl = 0
-    w = 10000000000
+def lastStoneWeight(stones):
+        kol = []
 
-    while ogon < len(l) - 1:
-        while glowa < len(l) - 1 and akt_wyn < t:
-            lenl += 1
-            glowa += 1
-            akt_wyn += l[glowa]
+        for i in stones:
+            heapq.heappush(kol, -1 * i)
 
-            if akt_wyn >= t:
-                w = min(lenl, w)
-                
-                
-        akt_wyn -= l[ogon]
-        ogon += 1
-        lenl -= 1
-        
-        
-        if akt_wyn >= t:
-            w = min(lenl, w)
+        while len(kol) > 1:
+            k1 = -heapq.heappop(kol)
+            k2 = -heapq.heappop(kol)
             
-    print(w)
+            if k1 != k2:
+                heapq.heappush(kol, max(k1, k2) - min(k1, k2))
+            else:
+                continue
+            
+        if len(kol) == 0:
+            return 0
+        return abs(kol[0])
 
-
-main()
+lastStoneWeight([2,2])
