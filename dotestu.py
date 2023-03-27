@@ -17,7 +17,7 @@ def lastStoneWeight(stones):
             k2 = -heapq.heappop(kol)
             
             if k1 != k2:
-                heapq.heappush(kol, max(k1, k2) - min(k1, k2))
+                heapq.heappush(kol, -(max(k1, k2) - min(k1, k2)))
             else:
                 continue
             
@@ -25,4 +25,4 @@ def lastStoneWeight(stones):
             return 0
         return abs(kol[0])
 
-lastStoneWeight([2,2])
+lastStoneWeight([3,7,2])
