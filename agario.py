@@ -2,45 +2,29 @@
 
 import bisect as bi
 from sys import stdin
-input = stdin.readline
-
-def binary(li, co, od):
-    pocz = od
-    kon = len(li) - 1
-    
-    while pocz < kon:
-        sr = (pocz + kon) // 2
-        if li[sr] >= co:
-            kon = sr
-        elif li[sr] < co:
-            pocz = sr + 1
-            
-    return max(0, pocz - 1)
-    
+input = stdin.readline    
     
 def main():
     n = int(input())
-    l = list(map(int, input().split()))
-    l.sort()
-    maxi = l[n - 1]
+    duze = list(map(int, input().split()))
+    male = []
+    duze.sort(reverse = True)
+    baj = 2
     w = 0
-    bitek = 2
-    od = 0
     
-    while bitek < maxi:
-        jaka = binary(l, bitek, od)
-        
-        if l[jaka] < bitek:
-            od = jaka
-            bitek += l[jaka]
-            w += 1
-        else:
-            if bitek >= maxi:
-                break
-            else:
-                print("NIE")
-                return 0
+    while baj < duze[0]:
+        while duze[-1] < baj:
+            male.append(duze[-1])
+            duze.pop()
+            
+        if len(male) == 0:
+            print("NIE")
+            return 0
+                
+        baj += male[-1]
+        male.pop()
+        w += 1
+
     print(w)
-    
     
 main()
