@@ -1,0 +1,64 @@
+# https://cses.fi/problemset/task/1193
+
+import queue as q
+from sys import stdin
+input = stdin.readline
+
+def inRange(x, y, n, m):
+    if x < n and y < m:
+        if 0 <= x and 0 <= y:
+            return True
+    
+    return False
+
+def BFS(x, y, droga, graf, n, m, lab):
+    odw = [[False for _ in range(m)] for _ in range(n)]
+    odw[x][y] = True
+    kolejka = q.Queue()
+    kolejka.put((x, y))
+    
+    while not kolejka.empty():
+        u = kolejka.get()
+        x, y = u[0], u[1]
+        for sasiad in graf[x][y]:
+            nx, ny = sasiad[0], sasiad[1]
+            if not odw[nx][ny]:
+                kolejka.put((nx, ny))
+                if lab[nx][ny] == "B":
+                    return "YES"
+        
+    return "NO"
+            
+
+def main():
+    n, m = map(int, input().split())
+    lab = []
+    droga = ""
+    
+    for _ in range(n):
+        lab.append(str(input().strip()))
+        
+    graf = [[[] for _ in range(m)] for _ in range(n)]    
+    ruchy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+    
+    for i in range(n):
+        for j in range(m):
+            if lab[i][j] == "." or lab[i][j] == "B" or lab[i][j] == "A":
+                for ruch in ruchy:
+                    nx, ny = i + ruch[0], j + ruch[1]
+                    if inRange(nx, ny, n, m) and (lab[nx][ny] == "." or lab[nx][ny] == "B" or lab[nx][ny] == "A"):
+                        graf[i][j].append((nx, ny))
+                        
+            if lab[i][j] == "A":
+                sx, sy = i, j
+            
+            if lab[i][j] == "B":
+                kx, ky = i, j
+    
+    if len(graf[sx][sy]) == 0 or len(graf[kx][ky]) == 0:
+        print("NO")
+        return
+    
+    print(BFS(sx, sy, droga, graf, n, m, lab))  
+
+main()    
