@@ -85,4 +85,5 @@ def main():
         poprzedni = sasiad
     print(sc)
 
+
 main()    

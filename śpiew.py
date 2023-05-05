@@ -1,24 +1,25 @@
 # https://szkopul.edu.pl/problemset/problem/JDLRIKmmfMWZ7G1Sy6Ldq7m8/site/?key=statement
 
-import math
 from sys import stdin
 input = stdin.readline
+import math
 
 def main():
     n = int(input())
-    l = str(input().strip())
-    akt = 0
+    s = str(input().strip())
+    l = 0
     w = 0
     
     for i in range(n):
-        if l[i] == "Z":
-            akt += 1
-        if l[i] == "W" or i == n - 1:
-            w += math.ceil(akt / 3)
-            akt = 0
+        if s[i] == "Z":
+            l += 1
+        else:
+            w += math.ceil(l / 3)
+            l = 0
             
+    if l != 0:
+        w += math.ceil(l / 3)
         
-            
     print(w)
     
 main()

@@ -7,45 +7,37 @@ from dataclasses import dataclass
 from sys import stdin
 input = stdin.readline
 
-# przykładowy graf reprezentowany przez słownik sąsiedztwa
-graph = {
-    'a': ['b', 'c'],
-    'b': ['d', 'e'],
-    'c': ['f'],
-    'd': [],
-    'e': ['f'],
-    'f': []
-}
+def liczba_samoglosek(a, b, samogloski):
+    c1, c2 = {}, {}
+    for i in a:
+        if i in samogloski:
+            c1[i] = c1.get(i, 0) + 1
+    for i in b:
+        if i in samogloski:
+            c2[i] = c2.get(i, 0) + 1
+            
+    return c1 == c2
 
-def bfs_path(graph, start, end):
-    # kolejka przechowująca wierzchołki do odwiedzenia
-    queue = deque([start])
-    # słownik zapisujący poprzedników wierzchołków
-    predecessors = {start: None}
+def usun_spacje(x):
+    return ''.join([i for i in x if i != ' '])
 
-    while queue:
-        # pobierz pierwszy wierzchołek z kolejki
-        current = queue.popleft()
+def main():
+    n, k = map(int, input().split())
+    w = 0
+    samogloski = set(["a", "e", "i", "o", "u", "y"])
+    
+    for _ in range(n):
+        a = str(input().strip())
+        b = str(input().strip())
+        a, b = usun_spacje(a), usun_spacje(b)
+        
+        if len(a) >= k and len(b) >= k:
+            a = a[-k:]
+            b = b[-k:]
+            if liczba_samoglosek(a, b, samogloski):
+                w += 1
+                
+    print(w)
+    
+main()
 
-        # jeśli dotarliśmy do wierzchołka końcowego, zakończ BFS
-        if current == end:
-            break
-
-        # przeglądaj sąsiadów wierzchołka bieżącego
-        for neighbor in graph[current]:
-            if neighbor not in predecessors:
-                # zapisz poprzednika sąsiada i dodaj go do kolejki
-                predecessors[neighbor] = current
-                queue.append(neighbor)
-
-    # zapisz ścieżkę od wierzchołka końcowego do wierzchołka początkowego
-    path = []
-    while end:
-        path.append(end)
-        end = predecessors[end]
-
-    # odwróć kolejność wierzchołków, aby uzyskać ścieżkę od początku do końca
-    return path[::-1]
-
-# przykładowe wywołanie funkcji bfs_path
-print(bfs_path(graph, 'a', 'f'))  # wynik: ['a', 'c', 'f']
