@@ -5,29 +5,29 @@ from sys import stdin
 input = stdin.readline
 
 def silnia(x):
-    s = 1
+    w = 1
     
     for i in range(2, x + 1):
-        s *= i
-        if s > 10000:
-            s %= 10000
+        w *= i
+        if w > 10000:
+            w %= 10000
         
-    return s
+    return w
 
 def main():
     n = int(input())
     l = list(map(int, input().split()))
     w = 1
     c = C(l)
-    
-    for key in c:
-        if c[key] == 1:
+
+    for k in c:
+        if c[k] == 1:
             continue
-        w *= silnia(c[key])
-        
+        w *= silnia(c[k])
+    
     if len(c) != 1:
         w *= 2
-    
+        
     if w > 10000:
         w = str(w)
         w = w[len(w) - 4 : len(w)]

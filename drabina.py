@@ -1,25 +1,28 @@
+# https://szkopul.edu.pl/problemset/problem/HP7pSEAJ_bJo48SU52zVi2c4/site/?key=statement
+
 from sys import stdin
 input = stdin.readline
 
 def main():
     q = int(input())
-    zap = []
-    maxi = -1
     
     for _ in range(q):
-        a, b = map(int, input().split())
-        zap.append([a, b])
-        maxi = max(maxi, a)
-    
-    szcze = [0] * (maxi + 1)
-    szcze[1] = 1
-    szcze[2] = 2
-    szcze[3] = 3
-    
-    for i in range(4, maxi + 1):
-        szcze[i] = szcze[i - 1] + szcze[i - 2]
+        n, p = map(int, input().split())
+        dp = [0 for _ in range(n + 1)]
         
-    for i in zap:
-        print(szcze[i[0]] % (2 ** i[1]))
+        if n == 1:
+            print(1 % 2 ** p)
+        elif n == 2:
+            print(2 % 2 ** p)
+        elif n == 3:
+            print(3 % 2 ** p)
+        else:
+            dp[1] = 1
+            dp[2] = 2
+            
+            for i in range(3, n + 1):
+                dp[i] = dp[i - 1] + dp[i - 2]
+                
+            print(dp[n] % 2 ** p)
     
 main()

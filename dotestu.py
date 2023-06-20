@@ -1,43 +1,76 @@
-import math
-import heapq
+from heapq import heapify, heappop, heappush
 from collections import deque
 from collections import Counter as C
 from itertools import accumulate
 from dataclasses import dataclass
+import queue as q
 from sys import stdin
 input = stdin.readline
+import math
 
-def liczba_samoglosek(a, b, samogloski):
-    c1, c2 = {}, {}
-    for i in a:
-        if i in samogloski:
-            c1[i] = c1.get(i, 0) + 1
-    for i in b:
-        if i in samogloski:
-            c2[i] = c2.get(i, 0) + 1
-            
-    return c1 == c2
+def BFS(od, graf , n):
+    odl = [1e18 for _ in range(n)]
+    kol = q.Queue()
+    kol.put(od)
+    odl[od] = 0
 
-def usun_spacje(x):
-    return ''.join([i for i in x if i != ' '])
+    while not kol.empty():
+        u = kol.get()
+        for sasiad in graf[u]:
+            if odl[u] + 1 < odl[sasiad[0]]:
+                odl[sasiad[0]] = odl[u] + 1
+                kol.put(sasiad[0])
 
-def main():
-    n, k = map(int, input().split())
-    w = 0
-    samogloski = set(["a", "e", "i", "o", "u", "y"])
+    return odl
+
+def Dijkstra(graf, od, k, odl_bfs, n):
+    odl = [1e18 for _ in range(n)]
+    odl[od] = 0
+    kol = []
+    heapify(kol)
+    heappush(kol, (0, od))
     
-    for _ in range(n):
-        a = str(input().strip())
-        b = str(input().strip())
-        a, b = usun_spacje(a), usun_spacje(b)
+    while len(kol) != 0:
+        wag, wie = heappop(kol)
         
-        if len(a) >= k and len(b) >= k:
-            a = a[-k:]
-            b = b[-k:]
-            if liczba_samoglosek(a, b, samogloski):
-                w += 1
-                
-    print(w)
+        if wag > odl[wie] or odl_bfs[wie] > k:
+            continue
+        
+        for sasiad, kraw in graf[wie]:
+            now_odl = wag + kraw
+            
+            if odl[sasiad] <= now_odl:
+                continue
+            
+            odl[sasiad] = now_odl
+            heappush(kol, (now_odl, sasiad))
+
+    return odl
+
+
+
+def findCheapestPrice(n, loty, od, do, k):
+    graf = [[] for _ in range(n)]
+
+    for i in loty:
+        graf[i[0]].append((i[1], i[2]))
+
+    odl_bfs = BFS(od, graf, n)
     
-main()
+    for i in range(n):
+        odl_bfs[i] -= 1
+    
+    if odl_bfs[do] > k:
+        return -1
+
+    odl_dij = Dijkstra(graf, od, k, odl_bfs, n)
+
+    if odl_dij[do] == 1e18:
+        return -1
+    
+    return odl_dij[do]
+
+
+    
+print(findCheapestPrice(4, [[0,1,1],[0,2,5],[1,2,1],[2,3,1]], 0, 3, 1))
 
