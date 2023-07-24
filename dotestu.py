@@ -8,69 +8,31 @@ from sys import stdin
 input = stdin.readline
 import math
 
-def BFS(od, graf , n):
-    odl = [1e18 for _ in range(n)]
-    kol = q.Queue()
-    kol.put(od)
-    odl[od] = 0
 
-    while not kol.empty():
-        u = kol.get()
-        for sasiad in graf[u]:
-            if odl[u] + 1 < odl[sasiad[0]]:
-                odl[sasiad[0]] = odl[u] + 1
-                kol.put(sasiad[0])
-
-    return odl
-
-def Dijkstra(graf, od, k, odl_bfs, n):
-    odl = [1e18 for _ in range(n)]
-    odl[od] = 0
-    kol = []
-    heapify(kol)
-    heappush(kol, (0, od))
-    
-    while len(kol) != 0:
-        wag, wie = heappop(kol)
-        
-        if wag > odl[wie] or odl_bfs[wie] > k:
-            continue
-        
-        for sasiad, kraw in graf[wie]:
-            now_odl = wag + kraw
-            
-            if odl[sasiad] <= now_odl:
-                continue
-            
-            odl[sasiad] = now_odl
-            heappush(kol, (now_odl, sasiad))
-
-    return odl
+def cyfry_liczby(x):
+  cyfry = []
+  for _ in range(19):
+    cyfry.append(x % 10)
+    x //= 10
+  cyfry = cyfry[::-1]
+  return cyfry
 
 
-
-def findCheapestPrice(n, loty, od, do, k):
-    graf = [[] for _ in range(n)]
-
-    for i in loty:
-        graf[i[0]].append((i[1], i[2]))
-
-    odl_bfs = BFS(od, graf, n)
-    
-    for i in range(n):
-        odl_bfs[i] -= 1
-    
-    if odl_bfs[do] > k:
-        return -1
-
-    odl_dij = Dijkstra(graf, od, k, odl_bfs, n)
-
-    if odl_dij[do] == 1e18:
-        return -1
-    
-    return odl_dij[do]
+def popraw(cyfry_a, cyfry_b):
+  cyfry_c = list(cyfry_b)
+  juz_dziewiatki = False
+  for i in range(19):
+    if juz_dziewiatki:
+        cyfry_c[i] = 9
+    elif cyfry_a[i] != cyfry_b[i]:
+      cyfry_c[i] = cyfry_b[i] - 1
+      juz_dziewiatki = True
+  return cyfry_c
 
 
-    
-print(findCheapestPrice(4, [[0,1,1],[0,2,5],[1,2,1],[2,3,1]], 0, 3, 1))
-
+a, b = map(int, input().split())
+cyfry_a, cyfry_b = cyfry_liczby(a), cyfry_liczby(b)
+cyfry_c = popraw(cyfry_a, cyfry_b)
+wynik1 = sum(cyfry_b)
+wynik2 = sum(cyfry_c)
+print(max(wynik1, wynik2))

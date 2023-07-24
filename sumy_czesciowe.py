@@ -1,4 +1,4 @@
-# https://szkopul.edu.pl/c/testowy_dd/p/scz/25252/
+# https://szkopul.edu.pl/problemset/problem/qY5rn-N0HxgKREU1d-8s2bJl/site/?key=statement
 
 from itertools import accumulate as ac
 from sys import stdin
@@ -9,9 +9,8 @@ def main():
     l = list(map(int, input().split()))
     l.reverse()
     pref = list(ac(l))
-    pref.reverse()
     
-    for i in pref:
-        print(i, end = " ")
+    for i in range(n - 1, -1, -1):
+        print(pref[i], end = " ")    
     
 main()

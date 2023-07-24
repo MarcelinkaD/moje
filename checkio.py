@@ -1,38 +1,61 @@
-def caps_lock(text: str) -> str:
-	w = text[0]
-	czywl = False
-	for k in range(1, len(text)):
-		i = text[k]
-		if i == "a" or i == "A" and k != 0:
-			if czywl == False:
-				czywl = True
-			else:
-				czywl = False
-				
-			continue
-			
-		else:
-			if i.isalpha():
-				if czywl == False:
-					w += i
-				else:
-					if i.isupper() and text[k - 1] != " ":
-						w += i.lower()
-					else:
-						w += i.upper()
-			else:
-				w += i
-	
-	return w
-	
+import queue as q
+
+def znajdz_somsiadow(x, l):
+    x = str(x)
+    w = []
+    for i in l:
+        if i == int(x):
+            continue
+        else:
+            i = str(i)
+            wyn = 0
+            for k in range(len(str(i))):
+                if i[k] == x[k]:
+                    wyn += 1
+                    
+            if wyn == 2:
+                w.append(int(i))
+                
+    return w
 
 
-if __name__ == "__main__":
-	print("Example:")
-	print(caps_lock("Why are you asking me that?"))
+from collections import deque
 
-	# These "asserts" are used for self-checking and not for an auto-testing
-	assert caps_lock("Why are you asking me that?") == "Why RE YOU sking me thT?"
-	assert caps_lock("Always wanted to visit Zambia.") == "AlwYS Wnted to visit ZMBI."
-	assert caps_lock("Aloha from Hawaii") == "Aloh FROM HwII"
-	print("Coding complete? Click 'Check' to earn cool rewards!")
+def bfs(graph, start, end):
+    queue = deque([[start]])
+    visited = set([start])
+
+    while queue:
+        path = queue.popleft()
+        node = path[-1]
+
+        if node == end:
+            return path
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(path + [neighbor])
+
+    return None
+
+    
+    
+def checkio(num):
+    pie = num[0]
+    ost = num[-1]
+    graf = {}
+    
+    for i in num:
+        wszyscy_somsiedzi = znajdz_somsiadow(i, num)
+        graf[i] = wszyscy_somsiedzi
+    
+    return bfs(graf, pie, ost)
+
+#These "asserts" using only for self-checking and not necessary for auto-testing
+if __name__ == '__main__':
+    assert checkio([123, 991, 323, 321, 329, 121, 921, 125, 999]) == [123, 121, 921, 991, 999], "First"
+    assert checkio([111, 222, 333, 444, 555, 666, 121, 727, 127, 777]) == [111, 121, 127, 727, 777], "Second"
+    assert checkio([456, 455, 454, 356, 656, 654]) == [456, 454, 654], "Third, [456, 656, 654] is correct too"
+
+
