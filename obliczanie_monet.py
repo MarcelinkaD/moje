@@ -5,7 +5,7 @@ input = stdin.readline
 
 def main():
     mon, q = map(int, input().split())
-    w = 0
+    w = 1
     i = 1
     
     while mon > 0:

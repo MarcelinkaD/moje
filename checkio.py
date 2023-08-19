@@ -1,61 +1,52 @@
-import queue as q
-
-def znajdz_somsiadow(x, l):
-    x = str(x)
+def find_quotes(a):
+    czy_otw = False
+    akt_w = ""
     w = []
-    for i in l:
-        if i == int(x):
-            continue
+    
+    for i in a:
+        if i == '"':
+            if czy_otw:
+                czy_otw = False
+                w.append(akt_w)
+                akt_w = ""
+            else:
+                czy_otw = True
         else:
-            i = str(i)
-            wyn = 0
-            for k in range(len(str(i))):
-                if i[k] == x[k]:
-                    wyn += 1
-                    
-            if wyn == 2:
-                w.append(int(i))
+            if czy_otw:
+                akt_w += i
                 
     return w
 
 
-from collections import deque
-
-def bfs(graph, start, end):
-    queue = deque([[start]])
-    visited = set([start])
-
-    while queue:
-        path = queue.popleft()
-        node = path[-1]
-
-        if node == end:
-            return path
-
-        for neighbor in graph[node]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(path + [neighbor])
-
-    return None
-
-    
-    
-def checkio(num):
-    pie = num[0]
-    ost = num[-1]
-    graf = {}
-    
-    for i in num:
-        wszyscy_somsiedzi = znajdz_somsiadow(i, num)
-        graf[i] = wszyscy_somsiedzi
-    
-    return bfs(graf, pie, ost)
-
-#These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
-    assert checkio([123, 991, 323, 321, 329, 121, 921, 125, 999]) == [123, 121, 921, 991, 999], "First"
-    assert checkio([111, 222, 333, 444, 555, 666, 121, 727, 127, 777]) == [111, 121, 127, 727, 777], "Second"
-    assert checkio([456, 455, 454, 356, 656, 654]) == [456, 454, 654], "Third, [456, 656, 654] is correct too"
+    print("Example:")
+    print(find_quotes('"Greetings"'))
 
-
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert find_quotes('"Greetings"') == ['Greetings']
+    assert find_quotes('Hi') == []
+    assert find_quotes('good morning mister "superman"') == ['superman']
+    assert find_quotes('"this" doesn\'t make any "sense"') == ['this', 'sense']
+    assert find_quotes('"Lorem Ipsum" is simply dummy text '
+ 'of the printing and typesetting '
+ 'industry. Lorem Ipsum has been the '
+ '"industry\'s standard dummy text '
+ 'ever since the 1500s", when an '
+ 'unknown printer took a galley of '
+ 'type and scrambled it to make a type '
+ 'specimen book. It has survived not '
+ 'only five centuries, but also the '
+ 'leap into electronic typesetting, '
+ 'remaining essentially unchanged. "It '
+ 'was popularised in the 1960s" with '
+ 'the release of Letraset sheets '
+ 'containing Lorem Ipsum passages, and '
+ 'more recently with desktop '
+ 'publishing software like Aldus '
+ 'PageMaker including versions of '
+ 'Lorem Ipsum.') == ['Lorem Ipsum',
+ "industry's standard dummy text ever "
+ 'since the 1500s',
+ 'It was popularised in the 1960s']
+    assert find_quotes('count empty quotes ""') == ['']
+    print("Coding complete? Click 'Check' to earn cool rewards!")
