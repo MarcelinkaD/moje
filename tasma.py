@@ -1,31 +1,24 @@
+# https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/
+
 from sys import stdin
 input = stdin.readline
 
 def main():
-    ile_zpytan = int(input())
+    n = int(input())
+    tab = list(map(int, input().split()))
+    pref = [0 for _  in range(n)]
+    pref[0] = tab[0]
+    w = 1e10
+    
+    for i in range(1, n):
+        pref[i] = pref[i - 1] + tab[i]
 
-    for k in range(ile_zpytan):
-        n = int(input())
-        tab = list(map(int, input().split()))
+    for i in range(n - 1):
+        po_lewo = pref[i]
+        po_prawo = pref[n - 1] - pref[i]
 
-        maxOdlPocz = 0
-
-        for i in range(n):
-            if(tab[0] != tab[i]):
-                maxOdlPocz = i
-
-        maxOdlKoniec = 0
-
-        for i in range(n - 1, -1, -1):
-            if(tab[i] != tab[n - 1]):
-                maxOdlKoniec = n - i - 1
-
-        wynik = max(maxOdlKoniec, maxOdlPocz)
-
-        if(wynik == 0):
-            wynik = "BRAK"
-            print(wynik)
-        else:
-            print(wynik)
+        w = min(abs(po_lewo - po_prawo), w)
+        
+    print(w)
 
 main()

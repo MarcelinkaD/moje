@@ -1,17 +1,18 @@
+# https://szkopul.edu.pl/c/olimpiada-od-podstaw-2023-24/p/poc/
+
 from sys import stdin
 input = stdin.readline
 
+def na_prawo
+
 def main():
-    n = int(input())
+    n, k = map(int, input().split())
     l = list(map(int, input().split()))
-    naj_w = -1e4
     
     for i in range(n):
-        for j in range(i, n):
-            naj_w = max(naj_w, l[j] - l[i])
+        if l[i] >= k:
             
         
-    print(naj_w)
         
     
 main()

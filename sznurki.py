@@ -1,4 +1,4 @@
-# https://szkopul.edu.pl/c/testowy_dd/p/szn/18797/
+# https://szkopul.edu.pl/problemset/problem/kX4OlPa45WcHw1SieV6ajTwX/site/?key=statement
 
 from sys import stdin
 input = stdin.readline

@@ -3,8 +3,7 @@ from dataclasses import dataclass
 @dataclass
 class Choragiew:    
     liczba: int
-    suma: int
-    liczba_napis : str
+    suma : int
     
 
 def main():
@@ -19,11 +18,10 @@ def main():
         for k in i:
             wynik += int(k)
             
-        ch = Choragiew(int(i), wynik, i)
+        ch = Choragiew(int(i), wynik)
         tab.append(ch)
     
     tab.sort(key = lambda x: (x.suma, x.liczba), reverse=True)
-    
     
     
     for obj in tab:
