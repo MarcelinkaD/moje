@@ -28,3 +28,5 @@ for i in range(n):
             w = max(w, k - i)
             
 print(w)
+
+# https://chat.openai.com/share/3945c97a-04eb-4e12-ad0e-d25d4ffa03d6
