@@ -1,14 +1,17 @@
-from itertools import permutations
+import math
 
-def main():
-    k = int(input())
-    cyfry = list(map(int, input().split()))
-    wszystkie_kombinacje = [''.join(map(str, p)) for p in permutations(cyfry)]
-    wszystkie_liczby = list(set([int(k) for k in wszystkie_kombinacje]))
-    wszystkie_liczby.sort()
+def czy_pierwsza(N):
+    if N == 0 or N == 1:
+        return False
     
-    for i in wszystkie_liczby:
-        if i % k == 0:
-            print(i)
+    do = int(math.sqrt(N)) + 1
     
-main()
+    for i in range(2, do):
+        if N % i == 0:
+            return False
+        
+    return True
+
+N = int(input())
+
+print(czy_pierwsza(N))
