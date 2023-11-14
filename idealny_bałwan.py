@@ -4,8 +4,8 @@ from sys import stdin
 input = stdin.readline
 
 def czy_da_sie(r, limit):
-    r2, r3 = 2 * r, 3 * r
-    v = (r ** 2) + (r2 ** 2) + (r3 ** 2)
+    r2 = r ** 2
+    v = 14 * r2
     return v <= limit
 
 def main():

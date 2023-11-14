@@ -1,6 +1,6 @@
 def czy_da_sie(r, limit):
-    r2, r3 = 2 * r, 3 * r
-    v = (r ** 2) + (r2 ** 2) + (r3 ** 2)
+    r2 = r ** 2
+    v = 14 * r2
     return v <= limit
 
 def brut(n):
@@ -50,7 +50,7 @@ import random
 
 numer_testu = 1
 while True:
-    n = random.randint(14, 10000)
+    n = random.randint(14, 1000000)
     
     [wynik1, wynik2, wynik3] = [brut(n), fast(n), brut2(n)]
     if wynik1 == wynik2 and wynik2 == wynik3:
