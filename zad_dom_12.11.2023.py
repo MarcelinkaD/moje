@@ -18,7 +18,7 @@
 #     akt += 1
 #     while not czy_pie[akt]:
 #         akt += 1
-#
+
 
 
 # from math import factorial as f
@@ -58,7 +58,8 @@
 # for i in range(1, int(sq(n)) + 1):
 #     if n % i == 0:
 #         wyn.append(i)
-#         wyn.append(n // i)
+#         if i != n // i:
+#             wyn.append(n // i)
 # 
 # wyn.sort()
 # 
@@ -78,8 +79,12 @@ for i in range(n):
         co_ma[2] += 1
 
 w = 0
-w += co_ma[10] * (n - 1)
-w += co_ma[5] * co_ma[2]
+
+if co_ma[10] == n:
+    w += co_ma[10]
+else:
+    w += co_ma[10] * (n - 1)
+    w += co_ma[5] * co_ma[2]
 
 print(w)
 
