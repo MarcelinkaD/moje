@@ -1,27 +1,32 @@
-# https://szkopul.edu.pl/c/olimpiada-poziom-ii-202223/p/krolewskie/
+# https://szkopul.edu.pl/c/testowy_dd/p/krolewskie/
 
 from sys import stdin
 input = stdin.readline
 
-def czy_kro(n):
-    w = 0
-    while n >= 1:
-        w += n % 2
-        n //= 2
+def czy_krol(x):
+    jed = 0
+    
+    while x != 0:
+        if x % 2 == 1:
+            jed += 1
+        x //= 2
         
-    return w % 2 == 0
+    if jed % 2 == 0:
+        return True
+    return False
 
-def main():
+def fast():
     q = int(input())
     
     for _ in range(q):
-        k = int(input())
-        l1 = 2 * k - 1
-        l2 = 2 * k - 2
+        n = int(input())
         
-        if czy_kro(l1):
+        l1 = 2 * n - 1
+        l2 = 2 * n - 2
+        
+        if czy_krol(l1):
             print(l1)
         else:
             print(l2)
     
-main()
+fast()

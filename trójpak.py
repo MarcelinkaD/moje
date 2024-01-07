@@ -7,26 +7,33 @@ def main():
     n = int(input())
     l = list(map(int, input().split()))
     ile_czego = list(map(int, input().split()))
-    co_musimy = set()
-    co_mamy = set()
+    co_musimy = {1 : 0, 2 : 0, 3: 0}
+    co_mamy = {1 : 0, 2 : 0, 3: 0}
     w = 0
+    ile_cyfr = 0
+    suma = 0
     
     for i in range(3):
-        for k in range(ile_czego[i]):
-            co_musimy.add(i + 1)
+        co_musimy[i + 1] = ile_czego[i]
+        ile_cyfr += ile_czego[i]
     
     ogon, glowa = 0, -1
     
-    while ogon < n - 1:
-        while glowa < n - 1 and len(co_mamy) < len(co_musimy):
+    while ogon < n:
+        while glowa < n - 1 and suma < ile_cyfr:
             glowa += 1
-            co_mamy.add(l[glowa])
+            co_mamy[l[glowa]] += 1
+            suma += 1
             
             if co_mamy == co_musimy:
                 w += 1
             
-        co_mamy.remove(l[ogon])
+        co_mamy[l[ogon]] -= 1
         ogon += 1
+        suma -= 1
+        
+        if co_mamy == co_musimy:
+            w += 1
         
     print(w)
 main()

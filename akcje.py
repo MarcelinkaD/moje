@@ -1,17 +1,20 @@
+# https://szkopul.edu.pl/c/olimpiada-od-podstaw-2023-24/p/akc/
+
 from sys import stdin
 input = stdin.readline
 
 def main():
     n = int(input())
     l = list(map(int, input().split()))
-    naj_w = -1e4
+    mini = l[0]
+    wyn = 0
     
-    for i in range(n):
-        for j in range(i, n):
-            naj_w = max(naj_w, l[j] - l[i])
-            
+    for i in range(1, n):
+        wyn = max(wyn, l[i] - mini)
         
-    print(naj_w)
-        
+        if l[i] < mini:
+            mini = l[i]  
+    
+    print(wyn)
     
 main()
