@@ -6,37 +6,60 @@ from collections import Counter as C
 from sys import stdin
 input = stdin.readline
 
+def gen(lit, k, akt, schowek):
+    if not lit:
+        if akt == 0:
+            return 1
+        return 0
+    
+    klucz = (tuple((lit)), akt)
+    
+    if klucz in schowek:
+        return schowek[klucz]
+    
+    wyn = 0
+    czy = set()
+    for i in range(len(lit)):
+        litera = lit[i]
+        if litera not in czy:
+            wyn += gen(lit[:i] + lit[i+1:], k, ((akt * 10) + int(lit[i])) % k, schowek)
+            czy.add(litera)
+    
+    schowek[klucz] = wyn
+    
+    return wyn
+
 def silnia(x):
     return math.factorial(x)
 
 def main():
     n, k = map(str, input().split())
     ile = len(n)
-    wn1 = []
+    wiecej_niz_1 = []
     k = int(k)
-    c = C(n)
+    zlicz = C(n)
     w = 0
-    podz = []
+    liczby_odpowiednie = []
     
-    for i in c:
+    for i in zlicz:
         if int(i) % k == 0 or (k == 6 and int(i) % 2 == 0):
-            podz.append(i)
+            liczby_odpowiednie.append(i)
         
-        if c[i] > 1:
-            wn1.append((i, c[i]))
+        if zlicz[i] > 1:
+            wiecej_niz_1.append((i, zlicz[i]))
     
-    if k == 2:
+    if k == 2 or k == 10 or k == 5:
         akt = 0
 
-        for i in podz:
+        for i in liczby_odpowiednie:
             akt = silnia(ile - 1)
             przez_co = 1
             
-            for k in wn1:
-                if k[0] == i:
-                    przez_co *= silnia(k[1] - 1)
+            for j in wiecej_niz_1:
+                if j[0] == i:
+                    przez_co *= silnia(j[1] - 1)
                 else:
-                    przez_co *= silnia(k[1])
+                    przez_co *= silnia(j[1])
                     
             akt //= przez_co
             w += akt
@@ -51,23 +74,10 @@ def main():
         if suma % 3 == 0:
             w = silnia(ile)
             
-            for i in wn1:
+            for i in wiecej_niz_1:
                 przez_co *= silnia(i[1])
             
             w //= przez_co
-            
-    elif k == 10:
-        akt = 0
-
-        for i in podz:
-            akt = silnia(ile - 1)
-            przez_co = 1
-            
-            for k in wn1:
-                przez_co *= silnia(k[1])
-                    
-            akt //= przez_co
-            w += akt
             
     elif k == 6:
         suma = 0
@@ -79,36 +89,29 @@ def main():
         if suma % 3 == 0:
             akt = 0
 
-            for i in podz:
+            for i in liczby_odpowiednie:
                 akt = silnia(ile - 1)
                 przez_co = 1
                 
-                for k in wn1:
-                    if k[0] == i:
-                        przez_co *= silnia(k[1] - 1)
+                for j in wiecej_niz_1:
+                    if j[0] == i:
+                        przez_co *= silnia(j[1] - 1)
                     else:
-                        przez_co *= silnia(k[1])
+                        przez_co *= silnia(j[1])
                         
                 akt //= przez_co
                 w += akt
-                
-    elif k == 5:
-        akt = 0
-
-        for i in podz:
-            akt = silnia(ile - 1)
-            przez_co = 1
-            
-            for k in wn1:
-                if k[0] == i:
-                    przez_co *= silnia(k[1] - 1)
-                else:
-                    przez_co *= silnia(k[1])
-                    
-            akt //= przez_co
-            w += akt
-            
-            
+        
+    else:
+        lit = []
+        schowek = {}
+        
+        for i in n:
+            lit.append(i)
+        
+        w = gen(lit, k, 0, schowek)
+    
+        
     print(w)
 
 main()

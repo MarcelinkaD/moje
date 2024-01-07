@@ -4,7 +4,6 @@ from sys import stdin
 input = stdin.readline
 
 def main():
-    n = int(input())
     s = str(input().strip())
     o = 0
     i = 0
@@ -18,6 +17,6 @@ def main():
         else:
             j += i
             
-    print(j == n)
+    print(j)
     
 main()
