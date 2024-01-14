@@ -4,6 +4,7 @@ from sys import stdin
 input = stdin.readline
 
 def main():
-    
+    n = int(input())
+    print(n + 1)
     
 main()
