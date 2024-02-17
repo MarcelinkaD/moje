@@ -1,9 +1,11 @@
+# https://szkopul.edu.pl/c/olimpiada-od-podstaw-2023-24/p/dyz/
+
 from sys import stdin
 input = stdin.readline
 from itertools import accumulate
 
 def main():
-    MAXN = int(1e7+4)
+    MAXN = int(1e6+4)
     sito = [0, 1] * (MAXN//2) + [1]
     sito[1], sito[2] = 0, 1
         

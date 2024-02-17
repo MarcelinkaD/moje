@@ -1,4 +1,4 @@
-# OIJ XVII
+# https://szkopul.edu.pl/c/testowy_dd/p/ful/
 
 from collections import Counter as C
 from itertools import product
@@ -9,7 +9,8 @@ def main():
     rodzaje = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"]
     lr = len(rodzaje)
     karty = str(input().strip())
-    c = C(karty)
+    c = dict(C(karty))
+    naj_w = 0
     ile_2 = 0
     ile_3 = 0
     ile_4 = 0
@@ -22,17 +23,14 @@ def main():
                 ile_2 += c[rodzaje[i]] // 2
             elif c[rodzaje[i]] % 3 == 0:
                 ile_3 += c[rodzaje[i]] // 3
-                
-    lista1 = [i for i in range(0, ile_3 + 1)]
-    lista2 = [i for i in range(0, ile_4 + 1)]
-    kom = product(lista1, lista2)
-    w = -1
     
-    for i in kom:
-        x, y = i[0], i[1]
-        w = max(w, min(ile_3 - x + ile_2 + 2 * (ile_4 - y), x + y))
-        
-    print(w)
+    for ile_3_z_3 in range(ile_3 + 1):
+        for ile_3_z_4 in range(ile_4 + 1):
+            liczba_fulli = min(ile_2 + ile_3 - ile_3_z_3 + 2 * ile_4 - 2 * ile_3_z_4, ile_3_z_3 + ile_3_z_4)
+            naj_w = max(liczba_fulli, naj_w)
+            
+    print(naj_w)
+    
     
 main()
 
