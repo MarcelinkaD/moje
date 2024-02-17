@@ -20,3 +20,16 @@ def main():
     print(wynik)
     
 main()
+
+# N = int(input())
+# dzielnik = 2
+# 
+# while dzielnik * dzielnik <= N:
+#     if N % dzielnik == 0:
+#         N //= dzielnik
+#         print(dzielnik, end=" ")
+#     else:
+#         dzielnik += 1
+#         
+# if N > 1:
+#     print(N)
