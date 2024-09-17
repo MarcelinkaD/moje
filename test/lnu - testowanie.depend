@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1719499183 source:c:\users\marce\onedrive\pulpit\programowanie\lnu - testowanie\main.cpp
+	<iostream>
+
+1722590448 source:c:\users\marce\onedrive\pulpit\programowanie\test\main.cpp
+	<iostream>
+	<math.h>
+

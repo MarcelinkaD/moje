@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1722442276 source:c:\users\marce\onedrive\pulpit\programowanie\procent chorych\main.cpp
+	<iostream>
+	<iomanip>
+	<cmath>
+

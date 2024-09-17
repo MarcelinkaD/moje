@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1722160361 source:c:\users\marce\onedrive\pulpit\programowanie\suma liczb poerwszych\main.cpp
+	<iostream>
+	<math.h>
+	<vector>
+	<iostream>
+	<math.h>
+

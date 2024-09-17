@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1722413804 source:c:\users\marce\onedrive\pulpit\programowanie\szyfry liniowy\main.cpp
+	<iostream>
+	<vector>
+	<string>
+

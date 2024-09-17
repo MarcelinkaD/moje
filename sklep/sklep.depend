@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1723379768 source:c:\users\marce\onedrive\pulpit\programowanie\sklep\main.cpp
+	<iostream>
+	<map>
+	<vector>
+

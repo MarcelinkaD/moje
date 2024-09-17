@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1724168304 source:c:\users\marce\onedrive\pulpit\programowanie\10 wspania³ych\main.cpp
+	<iostream>
+	<vector>
+	<bits/stdc++.h>
+

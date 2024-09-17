@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1724415378 source:c:\users\marce\onedrive\pulpit\programowanie\anagramy\main.cpp
+	<iostream>
+	<string>
+	<map>
+

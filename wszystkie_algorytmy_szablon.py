@@ -80,7 +80,41 @@ def BFS(graf, n, od):
             if not odw[sasiad]:
                 odw[sasiad] = True
                 kol.put(sasiad)
+                
+def BFS_z_liczeniem_odl(graf, n, od):
+    odl = [-1 for _ in range(n + 1)]
+    odl[od] = 0
+    kol = queue.Queue()
+    kol.put(od)
+    
+    while not kol.empty():
+        u = kol.get()
+        for sasiad in graf[u]:
+            if odl[sasiad] == -1:
+                odl[sasiad] = odl[u] + 1
+                kol.put(sasiad)
+                
+    return odl
+                
+                
+def DFS(graf, v, odw):
+    if not odw[v]:
+        odw[v] = True
+        for sasiad in graf[v]:
+            DFS(graf, sasiad, odw)
+    
+def wszystkie_podzbiory(l, n):
+    do = (2 ** n)
+    
+    for opcja in range(do):
+        for i in range(n):
+            if (opcja >> i) & 1:
+                print(l[i], end = " ")
+        print("")
     
 
+print(BFS_z_liczeniem_odl([[], [2, 3], [1, 4], [1], [2]], 4, 1))
+wszystkie_podzbiory([1, 2, 3], 3)
+    
     
     

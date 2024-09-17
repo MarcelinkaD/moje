@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1724773743 source:c:\users\marce\onedrive\pulpit\programowanie\apteka\main.cpp
+	<iostream>
+	<cstdio>
+	<algorithm>
+

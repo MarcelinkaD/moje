@@ -1,6 +1,5 @@
 # https://szkopul.edu.pl/c/oki-poziom-2-20232024/p/zap/18430/
 
-from collections import Counter as C
 from sys import stdin
 input = stdin.readline
 

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1712256868 source:c:\users\marce\onedrive\pulpit\programowanie\œlepe miasta\main.cpp
+	<iostream>
+	<set>
+	<vector>
+	<bits/stdc++.h>
+

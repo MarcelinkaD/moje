@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1722495577 source:c:\users\marce\onedrive\pulpit\programowanie\liczby jednorodne\main.cpp
+	<iostream>
+	<math.h>
+

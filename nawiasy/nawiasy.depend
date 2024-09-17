@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1723288531 source:c:\users\marce\onedrive\pulpit\programowanie\nawiasy\main.cpp
+	<iostream>
+	<stack>
+	<string>
+
