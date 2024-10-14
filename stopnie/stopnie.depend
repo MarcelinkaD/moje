@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1728493748 source:c:\users\marce\onedrive\pulpit\programowanie\stopnie\main.cpp
+	<iostream>
+	<cmath>
+	<iomanip>
+

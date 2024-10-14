@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1727973732 source:c:\users\marce\onedrive\pulpit\programowanie\zajac\main.cpp
+	<iostream>
+	<queue>
+	<vector>
+

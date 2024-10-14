@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1728491338 source:c:\users\marce\onedrive\pulpit\programowanie\kolo\main.cpp
+	<iostream>
+	<cmath>
+	<iomanip>
+
