@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1729960006 source:c:\users\marce\onedrive\pulpit\programowanie\alfabetyczna_kolejnosc\main.cpp
+	<iostream>
+	<queue>
+	<vector>
+

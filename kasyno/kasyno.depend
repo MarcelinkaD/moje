@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1730396218 source:c:\users\marce\onedrive\pulpit\programowanie\kasyno\main.cpp
+	<bits/stdc++.h>
+	"kaslib.h"
+
+1730396440 c:\users\marce\onedrive\pulpit\programowanie\kasyno\kaslib.h
+	<bits/stdc++.h>
+

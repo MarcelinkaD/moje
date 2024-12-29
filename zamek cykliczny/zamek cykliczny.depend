@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1731682334 source:c:\users\marce\onedrive\pulpit\programowanie\zamek cykliczny\main.cpp
+	<iostream>
+	<string>
+	<queue>
+	<unordered_map>
+	<algorithm>
+

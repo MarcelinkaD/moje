@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1729946331 source:c:\users\marce\onedrive\pulpit\programowanie\walki_robotow2\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+

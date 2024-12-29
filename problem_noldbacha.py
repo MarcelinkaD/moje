@@ -26,7 +26,7 @@ def main():
         razem = pierw[i] + pierw[i + 1]
         if sito[razem + 1] and razem + 1 <= n:
             w += 1
-#    breakpoint()
+   breakpoint()
     if w >= k:
         print("YES")
     else:

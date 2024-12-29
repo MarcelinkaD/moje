@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1729190847 source:c:\users\marce\onedrive\pulpit\programowanie\dijkstra1\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+
