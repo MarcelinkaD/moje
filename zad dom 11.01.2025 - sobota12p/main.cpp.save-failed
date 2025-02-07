@@ -1,0 +1,54 @@
+//https://szkopul.edu.pl/problemset/problem/Ak4wWPkNtHpF-OiulN1gixfW/site/?key=statement
+#include <bits/stdc++.h>
+using namespace std;
+
+unordered_map<int, vector<int>> ind;
+
+int binary(int licz, int akt_ind) {
+    int pocz = 0;
+    int kon = ind[licz].size();
+    while (pocz < kon) {
+        int srodek = (pocz + kon) / 2;
+        if (ind[licz][srodek] < )
+    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++){
+        int x;
+        cin >> x;
+        ind[x].push_back(i);
+    }
+
+    int q;
+    cin >> q;
+
+    for (int k = 0; k < q; k++){
+        int m;
+        cin >> m;
+        string wynik = "TAK";
+        int akt_ind = 0;
+        for (int i = 0; i < m; i++){
+            int akt_znak;
+            cin >> akt_znak;
+             int gdzie =
+        }
+    }
+
+    return 0;
+}
+
+/*
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello world!" << endl;
+    return 0;
+}
+*/

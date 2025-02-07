@@ -1,9 +1,9 @@
 //https://szkopul.edu.pl/c/mistrz-programowania-2025/p/r4c/
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-const int MAXN = 1e9 + 4;
-int kraw[MAXN];
+const int MAXN = 1e9 + 7;
+unordered_map<int, int> zak;
 
 int main()
 {
@@ -23,19 +23,28 @@ int main()
             int x;
             cin >> x;
             akt_ind += x;
-            kraw[akt_ind]++;
+            zak[akt_ind]++;
             suma += x;
         }
-       m = suma;
+        m = suma;
     }
 
     int min_wyn = MAXN;
     int max_wyn = -1;
+    auto kon = zak.end();
 
-    for (int i = 1; i < m; i++){
-        min_wyn = min(min_wyn, n - kraw[i]);
-        max_wyn = max(max_wyn, n - kraw[i]);
+    for (const auto& para : zak){
+        if (para.first != m) {
+            min_wyn = min(min_wyn, n - para.second);
+            max_wyn = max(max_wyn, n - para.second);
+        }
     }
+
+    if (zak.size() != m) {
+        max_wyn = max(max_wyn, n);
+    }
+
+    min_wyn = min(min_wyn, max_wyn);
 
     cout << min_wyn << ' ' << max_wyn << endl;
 
