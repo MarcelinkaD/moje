@@ -1,0 +1,4 @@
+ZAD 1. Stacja 1: -1011 Stacja 2: -1001100 Stacja 3: -1001011
+ZAD 2. 182
+ZAD 3. 42
+ZAD 4. 25

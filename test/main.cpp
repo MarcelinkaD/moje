@@ -1,43 +1,9 @@
-//https://szkopul.edu.pl/c/mistrz-programowania-2025/p/r4c/
 #include <iostream>
-using namespace std;
 
-const int MAXN = 1e9 + 4;
-int kraw[MAXN];
+using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-
-    int n;
-    cin >> n;
-    int m = 0;
-    for (int k = 0; k < n; k++) {
-        int p;
-        cin >> p;
-        int akt_ind = 0;
-        int suma = 0;
-        for (int i = 0; i < p; i++) {
-            int x;
-            cin >> x;
-            akt_ind += x;
-            kraw[akt_ind]++;
-            suma += x;
-        }
-       m = suma;
-    }
-
-    int min_wyn = MAXN;
-    int max_wyn = -1;
-
-    for (int i = 1; i < m; i++){
-        min_wyn = min(min_wyn, n - kraw[i]);
-        max_wyn = max(max_wyn, n - kraw[i]);
-    }
-
-    cout << min_wyn << ' ' << max_wyn << endl;
 
     return 0;
 }
