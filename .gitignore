@@ -1,0 +1,10 @@
+*.json
+*.cbp
+*.depend
+*.exe
+*.layout
+*.o
+*.layout
+*.save-failed
+*.layout
+*.layout
